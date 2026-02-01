@@ -1,99 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urgent Question!</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f8ff; /* Light blue background */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>One Question 💖</title>
 
-        h1 { color: #333; }
+<style>
+* { box-sizing: border-box; }
 
-        .button-container {
-            position: relative;
-            width: 300px;
-            height: 100px;
-            margin-top: 20px;
-        }
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #e0f7ff, #fff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-        button {
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
+.screen {
+  display: none;
+  animation: fadeIn 0.8s ease;
+}
 
-        #yesBtn {
-            background-color: #4CAF50; /* Green */
-            color: white;
-            margin-right: 10px;
-        }
+.screen.active {
+  display: block;
+}
 
-        #noBtn {
-            background-color: #f44336; /* Red */
-            color: white;
-            position: absolute;
-        }
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
 
-        .success-img {
-            display: none;
-            width: 300px;
-            border-radius: 15px;
-            margin-top: 20px;
-        }
-    </style>
+input, button {
+  padding: 14px 24px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 15px;
+}
+
+button {
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+#yesBtn { background: #4CAF50; color: white; }
+#noBtn {
+  background: #f44336;
+  color: white;
+  position: absolute;
+}
+
+.button-box {
+  position: relative;
+  width: 300px;
+  height: 120px;
+  margin: auto;
+}
+
+img {
+  width: 260px;
+  margin-top: 20px;
+  border-radius: 15px;
+}
+</style>
 </head>
+
 <body>
 
-    <div id="main-content">
-        <h1>Are we touching grass and hanging out next week? 🗺️</h1>
-        <p>Choose wisely...</p>
-        
-        <div class="button-container">
-            <button id="yesBtn">YES! 🍦</button>
-            <button id="noBtn">No. 💀</button>
-        </div>
-    </div>
+<!-- 🎵 MUSIC -->
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
 
-    <div id="success-message" style="display: none;">
-        <h1>LET'S GOOOOO! 🥳</h1>
-        <p>I'll send the calendar invite. See you then!</p>
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueW54YnhueGZueW54YnhueGZueW54YnhueGZueW54JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/l0HlHFRbmaZtBRhXG/giphy.gif" alt="Success GIF" class="success-img" style="display: block;">
-    </div>
+<!-- 🔐 SECRET SCREEN -->
+<div id="lock" class="screen active">
+  <h1>🔒 Secret Page</h1>
+  <p>Enter the password</p>
+  <input type="password" id="pass" placeholder="Hint: your name 😏"/>
+  <br/>
+  <button onclick="unlock()">Enter 💖</button>
+</div>
 
-    <script>
-        const noBtn = document.getElementById('noBtn');
-        const yesBtn = document.getElementById('yesBtn');
-        const mainContent = document.getElementById('main-content');
-        const successMessage = document.getElementById('success-message');
+<!-- ❓ QUESTION -->
+<div id="question" class="screen">
+  <h1>Are we touching grass and hanging out next week? 🗺️</h1>
+  <p>Choose wisely…</p>
 
-        // The "Fleeing" Logic
-        noBtn.addEventListener('mouseover', () => {
-            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-            
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
-        });
+  <div class="button-box">
+    <button id="yesBtn">YES 🍦</button>
+    <button id="noBtn">No 💀</button>
+  </div>
+</div>
 
-        // The "Success" Logic
-        yesBtn.addEventListener('click', () => {
-            mainContent.style.display = 'none';
-            successMessage.style.display = 'block';
-        });
-    </script>
+<!-- 🥳 SUCCESS -->
+<div id="success" class="screen">
+  <h1>LET’S GOOOO 🥳</h1>
+  <p>
+    Hansika, you just made my whole week brighter 🌸  
+    I promise laughs, food, and memories 💖
+  </p>
+
+  <p>Pick a date 👇</p>
+  <input type="date"/>
+
+  <img src="https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif" />
+</div>
+
+<script>
+const lock = document.getElementById('lock');
+const question = document.getElementById('question');
+const success = document.getElementById('success');
+const music = document.getElementById('music');
+
+function unlock() {
+  const p = document.getElementById('pass').value.toLowerCase();
+  if (p === "hansika") {
+    lock.classList.remove('active');
+    question.classList.add('active');
+    music.play();
+  } else {
+    alert("Wrong password 😌");
+  }
+}
+
+// NO button runs
+const noBtn = document.getElementById('noBtn');
+noBtn.addEventListener('mouseover', () => {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 100);
+  noBtn.style.left = x + 'px';
+  noBtn.style.top = y + 'px';
+});
+
+// YES success
+document.getElementById('yesBtn').addEventListener('click', () => {
+  question.classList.remove('active');
+  success.classList.add('active');
+});
+</script>
+
 </body>
 </html>
