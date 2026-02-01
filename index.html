@@ -77,7 +77,7 @@ img {
 
 <!-- 🎵 MUSIC -->
 <audio id="music" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+  <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mpeg">
 </audio>
 
 <!-- 🔐 SECRET SCREEN -->
@@ -111,7 +111,7 @@ img {
   <p>Pick a date 👇</p>
   <input type="date"/>
 
-  <img src="https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif" />
+  <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" />
 </div>
 
 <script>
@@ -144,6 +144,15 @@ noBtn.addEventListener('mouseover', () => {
 document.getElementById('yesBtn').addEventListener('click', () => {
   question.classList.remove('active');
   success.classList.add('active');
+  // ✨ Extra surprise message
+setTimeout(() => {
+  const msg = document.createElement("p");
+  msg.innerText = "P.S. I was smiling while making this 😌💖";
+  msg.style.fontSize = "18px";
+  msg.style.marginTop = "15px";
+  msg.style.animation = "fadeIn 1s ease";
+  document.getElementById("success").appendChild(msg);
+}, 3000);
 });
 </script>
 
