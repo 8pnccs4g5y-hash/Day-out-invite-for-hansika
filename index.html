@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urgent Question!</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff; /* Light blue background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+
+        h1 { color: #333; }
+
+        .button-container {
+            position: relative;
+            width: 300px;
+            height: 100px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #yesBtn {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            margin-right: 10px;
+        }
+
+        #noBtn {
+            background-color: #f44336; /* Red */
+            color: white;
+            position: absolute;
+        }
+
+        .success-img {
+            display: none;
+            width: 300px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-content">
+        <h1>Are we touching grass and hanging out next week? 🗺️</h1>
+        <p>Choose wisely...</p>
+        
+        <div class="button-container">
+            <button id="yesBtn">YES! 🍦</button>
+            <button id="noBtn">No. 💀</button>
+        </div>
+    </div>
+
+    <div id="success-message" style="display: none;">
+        <h1>LET'S GOOOOO! 🥳</h1>
+        <p>I'll send the calendar invite. See you then!</p>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueW54YnhueGZueW54YnhueGZueW54YnhueGZueW54JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/l0HlHFRbmaZtBRhXG/giphy.gif" alt="Success GIF" class="success-img" style="display: block;">
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const mainContent = document.getElementById('main-content');
+        const successMessage = document.getElementById('success-message');
+
+        // The "Fleeing" Logic
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        });
+
+        // The "Success" Logic
+        yesBtn.addEventListener('click', () => {
+            mainContent.style.display = 'none';
+            successMessage.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
